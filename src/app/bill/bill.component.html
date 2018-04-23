@@ -1,24 +1,35 @@
 <h2>Facture n° {{billNumber}}</h2>
 <div class="container">
   <form novalidate [formGroup]="billForm" (ngsubmit)="create()">
-    <div class="row">
-      <div class="col">
-        <label for="articleQuantity">quantité</label>
-      </div>
-      <div class="col">
-        <input type="text" id="articleQuantity" formControlName="articleQuantity">
-        <span class="error" *ngIf="billForm.get('articleQuantity').errors?.required">veuiller indiquer une quantité</span>
+    <div formArrayName="articles" *ngFor="let article of articles.controls; let i = index">
+      <div [formGroupName]="i">
+        <div class="row">
+          <div class="col">
+            <label for="articleQuantity">quantité</label>
+          </div>
+          <div class="col">
+            <input type="number" id="articleQuantity" formControlName="articleQuantity">
+            <span class="error" *ngIf="article.get('articleQuantity').errors?.required">veuiller indiquer une quantité</span>
+          </div>
+        </div>
+        <div class="row">
+          <div class="col">
+            <label for="articleName">nom</label>
+          </div>
+          <div class="col">
+            <input type="text" id="articleName" formControlName="articleName">
+            <span class="error" *ngIf="article.get('articleName').errors?.required">veuiller indiquer un intitulé</span>        
+          </div>
+        </div>
       </div>
     </div>
     <div class="row">
-      <div class="col">
-        <label for="articleName">nom</label>
+        <div class="col">
+        </div>
+        <div class="col">
+          <button class="btn btn-light" (click)="addExtraArticle()">ajouter un article</button>
+        </div>
       </div>
-      <div class="col">
-        <input type="text" id="articleName" formControlName="articleName">
-        <span class="error" *ngIf="billForm.get('articleName').errors?.required">veuiller indiquer un intitulé</span>        
-      </div>
-    </div>
     <div class="row">
       <div class="col">
       </div>
