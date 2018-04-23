@@ -1,0 +1,32 @@
+<h2>Facture n° {{billNumber}}</h2>
+<div class="container">
+  <form novalidate [formGroup]="billForm" (ngsubmit)="create()">
+    <div class="row">
+      <div class="col">
+        <label for="articleQuantity">quantité</label>
+      </div>
+      <div class="col">
+        <input type="text" id="articleQuantity" formControlName="articleQuantity">
+      </div>
+    </div>
+    <div class="row">
+      <div class="col">
+        <label for="articleName">nom</label>
+      </div>
+      <div class="col">
+        <input type="text" id="articleName" formControlName="articleName">
+      </div>
+    </div>
+    <div class="row">
+      <div class="col">
+      </div>
+      <div class="col">
+        <button type="submit">créer</button>
+      </div>
+    </div>
+  </form>
+</div>
+
+<div>
+  {{ billForm.value | json }}
+</div>
