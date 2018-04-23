@@ -7,6 +7,7 @@
       </div>
       <div class="col">
         <input type="text" id="articleQuantity" formControlName="articleQuantity">
+        <span class="error" *ngIf="billForm.get('articleQuantity').errors?.required">veuiller indiquer une quantité</span>
       </div>
     </div>
     <div class="row">
@@ -15,13 +16,14 @@
       </div>
       <div class="col">
         <input type="text" id="articleName" formControlName="articleName">
+        <span class="error" *ngIf="billForm.get('articleName').errors?.required">veuiller indiquer un intitulé</span>        
       </div>
     </div>
     <div class="row">
       <div class="col">
       </div>
       <div class="col">
-        <button type="submit">créer</button>
+        <button type="submit" [disabled]="billForm.invalid">créer</button>
       </div>
     </div>
   </form>
